@@ -1,3 +1,13 @@
+# ✨ PruebaNestBack ✨
+
+Este proyecto funciona como API rest para el proyecto prueba-angular-front, esta basado en el proyecto de los curso de Nest de platzi: **Platzi Store**, con la diferencia de solo manejar una collecion de productos.
+
+Estan implementados los servicios para realizar un CRUD sobre una lista de productos.
+
+Actualmente no esta conectada a una base de datos Mongo.
+
+## Informacion sobre Nest y ejecutar el proyecto
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
