@@ -14,6 +14,10 @@ Actualmente no esta conectada a una base de datos Mongo.
 
 > Para ver la documentacion del proyecto despues de ejecutar , se accede mediante: http://localhost:3005/docs
 
+## Aplicacion desplegada en Heroku
+
+> El API fue desplegada en Heroku bajo el siguiente url https://pure-basin-85787.herokuapp.com/ , para ver la documentacion agregar '/docs' a la ruta.
+
 ## Informacion sobre Nest y ejecutar el proyecto
 
 <p align="center">
