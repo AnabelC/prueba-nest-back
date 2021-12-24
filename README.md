@@ -6,6 +6,14 @@ Estan implementados los servicios para realizar un CRUD sobre una lista de produ
 
 Actualmente no esta conectada a una base de datos Mongo.
 
+## Ejecucion
+
+> Recordar que deben crearse los archivos .env para el manejo de variables de entorno, guiarse por el archivo .env.example
+
+## Documentacion de Servicios con swagger
+
+> Para ver la documentacion del proyecto despues de ejecutar , se accede mediante: http://localhost:3005/docs
+
 ## Informacion sobre Nest y ejecutar el proyecto
 
 <p align="center">
