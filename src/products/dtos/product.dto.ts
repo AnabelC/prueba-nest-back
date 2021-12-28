@@ -29,11 +29,6 @@ export class CreateProductDto {
   @ApiProperty({ description: `product's price` })
   readonly price: number;
 
-  @IsNumber()
-  @IsNotEmpty()
-  @ApiProperty({ description: `product's stock` })
-  readonly stock: number;
-
   @IsUrl()
   @IsNotEmpty()
   @ApiProperty({ description: `product's image` })
