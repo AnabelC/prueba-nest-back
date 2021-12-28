@@ -12,7 +12,7 @@ Esta conectado a una base de datos en Mongo Atlas, con la colección products.
 
 ## Documentacion de Servicios con swagger
 
-> Para ver la documentacion del proyecto despues de ejecutar , se accede mediante: http://localhost:3005/docs
+> Para ver la documentacion del proyecto despues de ejecutar , se accede mediante: http://localhost:3005/docs, 3005 fue el puerto utilizado de pruebas puede ser cambiado en la variable 'PORT' del archivo **.env**. 
 
 ## Aplicacion desplegada en Heroku
 
