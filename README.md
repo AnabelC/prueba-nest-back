@@ -4,7 +4,7 @@ Este proyecto funciona como API rest para el proyecto prueba-angular-front, esta
 
 Estan implementados los servicios para realizar un CRUD sobre una lista de productos.
 
-Actualmente no esta conectada a una base de datos Mongo.
+Esta conectado a una base de datos en Mongo Atlas, con la colección products.
 
 ## Ejecucion
 
@@ -12,7 +12,7 @@ Actualmente no esta conectada a una base de datos Mongo.
 
 ## Documentacion de Servicios con swagger
 
-> Para ver la documentacion del proyecto despues de ejecutar , se accede mediante: http://localhost:3005/docs
+> Para ver la documentacion del proyecto despues de ejecutar , se accede mediante: http://localhost:3005/docs, 3005 fue el puerto utilizado de pruebas puede ser cambiado en la variable 'PORT' del archivo **.env**. 
 
 ## Aplicacion desplegada en Heroku
 
