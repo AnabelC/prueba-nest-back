@@ -1,63 +1,60 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model, FilterQuery } from 'mongoose';
 
-import { Product } from '../entities/product.entity';
-import { CreateProductDto, UpdateProductDto } from '../dtos/product.dto';
+import { Product } from './../entities/product.entity';
+import {
+  CreateProductDto,
+  UpdateProductDto,
+  FilterProductDto,
+} from './../dtos/product.dto';
 
 @Injectable()
 export class ProductsService {
-  private counterId = 1;
-  private products: Product[] = [
-    {
-      id: 1,
-      name: 'Product 1',
-      description: 'Descripcion producto 1',
-      price: 122,
-      image: '',
-      stock: 12,
-    },
-  ];
+  constructor(
+    @InjectModel(Product.name) private productModel: Model<Product>,
+  ) {}
 
-  findAll() {
-    return this.products;
+  findAll(params?: FilterProductDto) {
+    if (params) {
+      const filters: FilterQuery<Product> = {};
+      const { limit, offset } = params;
+      const { minPrice, maxPrice } = params;
+      if (minPrice && maxPrice) {
+        filters.price = { $gte: minPrice, $lte: maxPrice };
+      }
+      return this.productModel.find(filters).skip(offset).limit(limit).exec();
+    }
+    return this.productModel.find().exec();
   }
 
-  findOne(id: number) {
-    const product = this.products.find((item) => item.id === id);
+  async findOne(id: string) {
+    const product = await this.productModel.findById(id).exec();
     if (!product) {
       throw new NotFoundException(`Product #${id} not found`);
     }
     return product;
   }
 
-  create(payload: CreateProductDto) {
-    this.counterId += this.counterId;
-    const newProdut = {
-      id: this.counterId,
-      ...payload,
-    };
-    this.products.push(newProdut);
-    return newProdut;
+  create(data: CreateProductDto) {
+    const newProduct = new this.productModel(data);
+    return newProduct.save();
   }
 
-  update(id: number, payload: UpdateProductDto) {
-    const product = this.findOne(id);
-    if (product) {
-      const index = this.products.findIndex((item) => item.id === id);
-      this.products[index] = {
-        ...product,
-        ...payload,
-      };
-      return this.products[index];
-    }
-    return null;
-  }
-
-  remove(id: number) {
-    const index = this.products.findIndex((item) => item.id === id);
-    if (index === -1) {
+  update(id: string, changes: UpdateProductDto) {
+    const product = this.productModel
+      .findByIdAndUpdate(id, { $set: changes }, { new: true })
+      .exec();
+    if (!product) {
       throw new NotFoundException(`Product #${id} not found`);
     }
-    this.products.splice(index, 1);
-    return true;
+    return product;
+  }
+
+  remove(id: string) {
+    const product = this.productModel.findByIdAndDelete(id).exec();
+    if (!product) {
+      throw new NotFoundException(`Product #${id} not found`);
+    }
   }
 }
