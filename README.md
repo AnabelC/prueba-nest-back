@@ -4,7 +4,7 @@ Este proyecto funciona como API rest para el proyecto prueba-angular-front, esta
 
 Estan implementados los servicios para realizar un CRUD sobre una lista de productos.
 
-Actualmente no esta conectada a una base de datos Mongo.
+Esta conectado a una base de datos en Mongo Atlas, con la colección products.
 
 ## Ejecucion
 
